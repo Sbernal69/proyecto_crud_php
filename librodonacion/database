@@ -1,0 +1,34 @@
+--
+-- Base de datos: `sampledb`
+--
+
+CREATE DATABASE libro;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estudiante`
+--
+
+CREATE TABLE `donacion` (
+  `id` int(11) NOT NULL,
+  `autor` varchar(50) NOT NULL,
+  `nombrelibro` varchar(50) NOT NULL,
+  `temalibro` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+--
+ALTER TABLE `donacion`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `libro`
+--
+ALTER TABLE `donacion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+COMMIT;

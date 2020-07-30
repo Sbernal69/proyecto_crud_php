@@ -1,0 +1,57 @@
+--
+-- Base de datos: `sampledb`
+--
+
+CREATE DATABASE compraventa;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estudiante`
+--
+
+CREATE TABLE `compra` (
+  `id` int(11) NOT NULL,
+  `autor` varchar(100) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `tema` varchar(300) NOT NULL,
+  `idioma` varchar(20) NOT NULL,
+  `valorcompra` int(20) NOT NULL,
+  `fechacompra` date default NULL,
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `estudiante`
+--
+
+INSERT INTO `libro` (`id`, `autor`, `nombre`, `tema`,`idioma`, `valor`,`fechacompra`) VALUES
+(1, 'León Tolstói', 'Guerra y paz', 'Invasión napoleónica de Rusia y zarismo','Espanol, '20.000','12/03/2019' ),
+(2, 'Jane Austen', 'Orgullo y prejuicio', 'Novela rosa Sátira, Ficción histórica Romance históricob Novela costumbrista','Espanol, '80.000','29/03/2019'),
+(3, 'Miguel de Cervantes, 'Don Quijote de la Mancha', 'Historia, Drama ','Espanol, '100.000','12/12/2019');
+(4, ' Marcel Proust, 'En busca del tiempo perdido', 'superacion,'Espanol, '30.000','12/04/2019');
+(5, 'Homero', 'Ilíada', 'Epopeya, Poesía, Épico,'Espanol, '50.000','11/01/2019');
+--
+-- Índices para tablas volcadas
+--
+INSERT INTO `compra` (`id`, `autor`, `nombre`, `tema`,`idioma`, `valorcompra`,`fechacompra`) VALUES 
+(1, 'León Tolstói', 'Guerra y paz', 'Invasión napoleónica de Rusia y zarismo','Espanol', '20.000','12/03/2019' ), 
+(2, 'Jane Austen', 'Orgullo y prejuicio', 'Novela rosa Sátira, Ficción histórica Romance históricob Novela costumbrista','Espanol', '80.000','29/03/2019'),
+(3, 'Miguel de Cervantes', 'Don Quijote de la Mancha', 'Historia, Drama','Espanol','100.000','12/12/2019'),
+(4, ' Marcel Proust', 'En busca del tiempo perdido', 'superacion','Espanol', '30.000','12/04/2019'),
+(5, 'Homero', 'Ilíada, Epopeya, Poesía', 'Épico','Espanol', '50.000','11/01/2019');
+--
+-- Indices de la tabla
+--
+ALTER TABLE `compra`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `libro`
+--
+ALTER TABLE `compra`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+COMMIT;
