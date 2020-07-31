@@ -69,46 +69,49 @@ while($row = $query->fetch(PDO::FETCH_ASSOC))
 	$fechacompra = $row['fechacompra'];
 }
 ?>
-<html>
-<head>
-	<title>Edit Data</title>
-</head>
+<!doctype html>
+<html lang="en">
+    <!-- Header -->
+    <?php include '../partials/header.php' ?>
+    <body>
+        <!-- Navbar -->
+        <?php include '../partials/navbar.php' ?>
+		<div class="content" align="center" style="padding-top:20px;" ><h1>Libros</h1></div>
+        <div class="container" align="center" style="padding-top:20px;">
+			<form name="form1" method="post" action="edit.php">
+				<table border="0">
+					<tr>
+						<td>autor</td>
+						<td><input type="text" name="autor" value="<?php echo $autor;?>"></td>
+					</tr>
+					<tr>
+						<td>nombre</td>
+						<td><input type="text" name="nombre" value="<?php echo $nombre;?>"></td>
+					</tr>
+					<tr>
+						<td>tema</td>
+						<td><input type="text" name="tema" value="<?php echo $tema;?>"></td>
+					</tr>
+					<tr>
+						<td>idioma</td>
+						<td><input type="text" name="idioma" value="<?php echo $idioma;?>"></td>
+					</tr>
+					<tr>
+						<td>Valor Compra</td>
+						<td><input type="text" name="valorcompra" value="<?php echo $valorcompra;?>"></td>
+					</tr>
+					<tr>
+						<td>Fecha compra</td>
+						<td><input type="date" name="fechacompra" value="<?php echo $fechacompra;?>"></td>
+					</tr>
+					<tr>
 
-<body>
-	<a href="index.php">Home</a>
-	<br/><br/>
-
-	<form name="form1" method="post" action="edit.php">
-		<table border="0">
-			<tr>
-				<td>autor</td>
-				<td><input type="text" name="autor" value="<?php echo $autor;?>"></td>
-			</tr>
-			<tr>
-				<td>nombre</td>
-				<td><input type="text" name="nombre" value="<?php echo $nombre;?>"></td>
-			</tr>
-			<tr>
-				<td>tema</td>
-				<td><input type="text" name="tema" value="<?php echo $tema;?>"></td>
-			</tr>
-			<tr>
-				<td>idioma</td>
-				<td><input type="text" name="idioma" value="<?php echo $idioma;?>"></td>
-			</tr>
-			<tr>
-				<td>Valor Compra</td>
-				<td><input type="text" name="valorcompra" value="<?php echo $valorcompra;?>"></td>
-			</tr>
-			<tr>
-				<td>Fecha compra</td>
-				<td><input type="date" name="fechacompra" value="<?php echo $fechacompra;?>"></td>
-			</tr>
-			<tr>
-
-				<td><input type="submit" name="update" value="Update"></td>
-			</tr>
-		</table>
-	</form>
-</body>
+						<td><input type="submit" name="update" value="Update"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+        <!-- Footer -->
+        <?php include '../partials/footer.php' ?>
+    </body>
 </html>
