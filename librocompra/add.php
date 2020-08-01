@@ -1,59 +1,46 @@
-<html>
-<head>
-	<title>Add Data</title>
-</head>
-<body>
-<?php
-
-include_once("config.php");
-
-if(isset($_POST['Submit'])) {
-	$autor = $_POST['autor'];
-	$nombre = $_POST['nombre'];
-	$tema = $_POST['tema'];
-	$idioma = $_POST['idioma'];
-	$valorcompra= $_POST['valorcompra'];
-	$fechacompra = $_POST['fechacompra'];
-
-	if(empty($autor) || empty($nombre) || empty($tema) || empty($idioma) || empty($valorcompra) || empty($fechacompra)) {
-
-		if(empty($autor)) {
-			echo "<font color='red'>Campo: autor esta vacio.</font><br/>";
-		}
-		if(empty($nombre)) {
-			echo "<font color='red'>Campo: Nombre libro esta vacio.</font><br/>";
-		}
-		if(empty($tema)) {
-			echo "<font color='red'>Campo: tema libro esta vacio.</font><br/>";
-		}
-		if(empty($idioma)) {
-			echo "<font color='red'>Campo: autor esta vacio.</font><br/>";
-		}
-		if(empty($valorcompra)) {
-			echo "<font color='red'>Campo: autor esta vacio.</font><br/>";
-		}
-		if(empty($fechacompra)) {
-			echo "<font color='red'>Campo: autor esta vacio.</font><br/>";
-		}
-		echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
-	} else {
-
-		$sql = "INSERT INTO libro (autor, nombre, tema, idioma, valorcompra, fechacompra) VALUES(:autor, :nombre, :tema, :idioma, :valorcompra, :fechacompra)";
-		$query = $conn->prepare($sql);
-
-		$query->bindparam(':autor', $autor);
-		$query->bindparam(':nombre', $nombre);
-		$query->bindparam(':tema', $tema);
-		$query->bindparam(':idioma', $idioma);
-		$query->bindparam(':valorcompra', $valorcompra);
-		$query->bindparam(':fechacompra', $fechacompra);
-		$query->execute();
-
-
-		echo "<font color='green'>Data added successfully.";
-		echo "<br/><a href='index.php'>View Result</a>";
-	}
-}
-?>
-</body>
+<!doctype html>
+<html lang="en">
+    <!-- Header -->
+    <?php include '../partials/header.php' ?>
+    <body>
+        <!-- Navbar -->
+        <?php include '../partials/navbar.php' ?>
+		<div class="content" align="center" style="padding-top:20px;" ><h1>Comprar Libro</h1></div>
+        <div class="container" align="center" style="padding-top:20px;">
+			<form action="add2.php" method="post" name="form1">
+				<table width="25%" border="0">
+					<tr>
+						<td>Nombre</td>
+						<td><input type="text" name="nombre"></td>
+					</tr>
+					<tr>
+						<td>Autor</td>
+						<td><input type="text" name="autor"></td>
+					</tr>
+					<tr>
+						<td>Tema</td>
+						<td><input type="text" name="tema"></td>
+					</tr>
+					<tr>
+						<td>Idioma</td>
+						<td><input type="text" name="idioma"></td>
+					</tr>
+					<tr>
+						<td>Valor Compra</td>
+						<td><input type="text" name="valorcompra"></td>
+					</tr>
+					<tr>
+						<td>Fecha Compra</td>
+						<td><input type="text" name="fechacompra"></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="submit" name="Submit" value="Add"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+        <!-- Footer -->
+        <?php include '../partials/footer.php' ?>
+    </body>
 </html>

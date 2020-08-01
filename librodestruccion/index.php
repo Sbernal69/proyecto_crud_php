@@ -4,35 +4,42 @@ include_once("config.php");
 
 $result = $conn->query("SELECT * FROM destruir ORDER BY id DESC");
 ?>
-
-<html>
-<head>
-	<title>Crear Registro</title>
-</head>
-
-<body>
-<a href="add.html">Adicionar Libro</a><br/><br/>
-<br>
-<br>
-<br>
-	<table width='80%' border=0>
-
-	<tr bgcolor='#CCCCCC'>
-		<td>Nombre</td>
-		<td>Comentario</td>
-	</tr>
-	<?php
-	while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-		echo "<tr>";
-		echo "<td>".$row['Nombre']."</td>";
-		echo "<td>".$row['Comentario']."</td>";
-		echo "<td><a href=\"edit.php?id=$row[id]\">Edit</a> | <a href=\"delete.php?id=$row[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
-	}
-	?>
-	</table>
-</body>
-<br>
-<br>
-<br>
-<a href="../php-login/inicio.php">Regresar inicio</a><br>
+<!doctype html>
+<html lang="en">
+    <!-- Header -->
+    <?php include '../partials/header.php' ?>
+    <body>
+        <!-- Navbar -->
+        <?php include '../partials/navbar.php' ?>
+		<div class="content" align="center" style="padding-top:20px;" ><h1>Destruccon libros</h1></div>	
+        <div class="container" style="position: relative;padding-top:20px;padding-bottom: 40px;">
+			<div align="center" style="position: absolute;margin-left: 43%;z-index: 1;"><a href="add.html" class="btn btn-outline-success" role="button" aria-pressed="true">Agregar Libros</a></div>
+			<table id="example" class="table table-bordered table-hover table-striped" >
+				<thead class="thead-dark">
+					<tr>
+						<th class="centerText" scope="col">Nombre</th>
+						<th class="centerText" scope="col">Comentario</th>
+						<th class="centerText" scope="col">Acciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+					while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+						echo "<tr>";
+						echo "<td>".$row['Nombre']."</td>";
+						echo "<td>".$row['Comentario']."</td>";
+						echo "<td><div class='row'><div class='col-4'><a href=\"add.html\"><i class='fa fa-plus-square' aria-hidden='true'></i></a></div><div class='col-4'><a href=\"edit.php?id=$row[id]\"><i class='fa fa-edit' aria-hidden='true'></i></a></div><div class='col-4'><a href=\"delete.php?id=$row[id]\" onClick=\"return confirm('Are you sure you want to delete?')\"><i class='fa fa-times' aria-hidden='true'></i></a></div></div></td>";
+					}
+					?>
+				</tbody>
+			</table>
+        </div>
+		<script>
+			$(document).ready(function() {
+				$('#example').DataTable();
+			} );
+		</script>	
+        <!-- Footer -->
+        <?php include '../partials/footer.php' ?>
+    </body>
 </html>
