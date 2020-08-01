@@ -21,7 +21,7 @@
 <!doctype html>
 <html lang="en">
     <!-- Header -->
-    <?php include '../partials/header.php' ?>
+    <?php include 'partials/header.php' ?>
     <body>
       <?php if(!empty($message)): ?>
         <p> <?= $message ?></p>
@@ -39,6 +39,6 @@
         </form>
       </div>
         <!-- Footer -->
-        <?php include '../partials/footer.php' ?>
+        <?php include 'partials/footer.php' ?>
     </body>
 </html>

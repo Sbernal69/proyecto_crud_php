@@ -5,26 +5,26 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto" >
             <li class="nav-item">
-                <a class="nav-link" href="../php-login/inicio.php">Home</a>
+                <a class="nav-link" href="/libro/inicio.php">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../libroclientes/index.php">Registrar Clientes</a>
+                <a class="nav-link" href="./libroclientes/index.php">Registrar Clientes</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../librocompra/index.php">Comprar libros</a>
+                <a class="nav-link" href="./librocompra/index.php">Comprar libros</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../librodestruccion/index.php">Destruccion libos</a>
+                <a class="nav-link" href="./librodestruccion/index.php">Destruccion libos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../librodonacion/index.php">Donacion Libros</a>
+                <a class="nav-link" href="./librodonacion/index.php">Donacion Libros</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../libroventa/index.php">Venta Libros</a>
+                <a class="nav-link" href="./libroventa/index.php">Venta Libros</a>
             </li>
         </ul>
     </div>
     <form class="form-inline">
-        <a class="btn btn-outline-info my-2 my-sm-0" href="../php-login/logout.php" role="button">Cerrar Sesion</a>
+        <a class="btn btn-outline-info my-2 my-sm-0" href="./logout.php" role="button">Cerrar Sesion</a>
     </form>
 </nav>

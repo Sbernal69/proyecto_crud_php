@@ -17,7 +17,7 @@
 
     if (count($results) > 0 && password_verify($_POST['password'], $results['password'])) {
       $_SESSION['user_id'] = $results['id'];
-      header("Location: /libro/php-login/inicio.php");
+      header("Location: /libro/inicio.php");
     } else {
       $message = 'Sorry, those credentials do not match';
     }
@@ -28,7 +28,7 @@
 <!doctype html>
 <html lang="en">
     <!-- Header -->
-    <?php include '../partials/header.php' ?>
+    <?php include 'partials/header.php' ?>
     <body>
       <?php if(!empty($message)): ?>
         <p> <?= $message ?></p>
@@ -51,6 +51,6 @@
         </div> 
       </div>
       <!-- Footer -->
-      <?php include '../partials/footer.php' ?>
+      <?php include 'partials/footer.php' ?>
     </body>
 </html>

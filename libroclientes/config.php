@@ -8,6 +8,7 @@ $database = 'bnffgj0smkwdchne3ytj';
 try {
   $conn = new PDO("mysql:host=$server;dbname=$database;", $username, $password);
 } catch (PDOException $e) {
+  echo "fallo conexion";
   die('Connection Failed: ' . $e->getMessage());
 }
 
