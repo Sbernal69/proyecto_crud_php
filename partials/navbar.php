@@ -24,4 +24,7 @@
             </li>
         </ul>
     </div>
+    <form class="form-inline">
+        <a class="btn btn-outline-info my-2 my-sm-0" href="../php-login/logout.php" role="button">Cerrar Sesion</a>
+    </form>
 </nav>

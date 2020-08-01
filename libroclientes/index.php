@@ -12,7 +12,7 @@ $result = $conn->query("SELECT * FROM cliente ORDER BY id DESC");
     <body>
         <!-- Navbar -->
         <?php include '../partials/navbar.php' ?>
-		<div class="content" align="center" style="padding-top:20px;" ><h1>Clientes</h1></div>	
+		<div class="content" align="center" style="padding-top:20px;" ><h1>Registrar Clientes</h1></div>	
         <div class="container" style="position: relative;padding-top:20px;padding-bottom: 100px;">
 			<div align="center" style="position: absolute;margin-left: 43%;z-index: 1;"><a href="add.php" class="btn btn-outline-success" role="button" aria-pressed="true">Agregar Cliente</a></div>
 			<table id="example" class="table table-bordered table-hover table-striped" >

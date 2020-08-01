@@ -5,5 +5,5 @@
 
   session_destroy();
 
-  header('Location: /libro/php-login/index.php');
+  header('Location: /libro/php-login/login.php');
 ?>
