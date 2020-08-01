@@ -1,88 +1,51 @@
 <?php
-
 include_once("config.php");
-
-if(isset($_POST['update']))
-{
-	$id = $_POST['id'];
-  $autor = $_POST['autor'];
-	$nombrelibro = $_POST['nombrelibro'];
-	$temalibro = $_POST['temalibro'];
-
-
-	if(empty($autor) || empty($nombrelibro) || empty($temalibro)) {
-
-		if(empty($autor)) {
-			echo "<font color='red'>Name field is empty.</font><br/>";
-		}
-
-		if(empty($nombrelibro)) {
-			echo "<font color='red'>Age field is empty.</font><br/>";
-		}
-
-		if(empty($temalibro)) {
-			echo "<font color='red'>Email field is empty.</font><br/>";
-		}
-	} else {
-
-		$sql = "UPDATE donacion SET autor=:autor, nombrelibro=:nombrelibro, temalibro=:temalibro WHERE id=:id";
-		$query = $dbConn->prepare($sql);
-
-		$query->bindparam(':id', $id);
-		$query->bindparam(':autor', $autor);
-		$query->bindparam(':nombre', $nombrelibro);
-		$query->bindparam(':curso', $temalibro);
-		$query->execute();
-
-
-		header("Location: index.php");
-	}
-}
-?>
-<?php
-
 $id = $_GET['id'];
-
-
 $sql = "SELECT * FROM donacion WHERE id=:id";
 $query = $conn->prepare($sql);
 $query->execute(array(':id' => $id));
 
-while($row = $query->fetch(PDO::FETCH_ASSOC))
-{
-  $autor = $row['autor'];
-	$nombrelibro = $row['nombre'];
-	$temalibro = $row['temalibro'];
-}
+	while($row = $query->fetch(PDO::FETCH_ASSOC))
+	{
+		$autor = $row['autor'];
+		$nombrelibro = $row['nombrelibro'];
+		$temalibro = $row['temalibro'];
+	}
 ?>
-<html>
-<head>
-	<title>Edit Data</title>
-</head>
-
-<body>
-	<a href="index.php">Home</a>
-	<br/><br/>
-
-	<form name="form1" method="post" action="edit.php">
-		<table border="0">
-			<tr>
-				<td>Name</td>
-				<td><input type="text" name="autor" value="<?php echo $autor;?>"></td>
-			</tr>
-			<tr>
-				<td>Age</td>
-				<td><input type="text" name="nombrelibro" value="<?php echo $nombrelibro;?>"></td>
-			</tr>
-			<tr>
-				<td>Email</td>
-				<td><input type="text" name="temalibro" value="<?php echo $temalibro;?>"></td>
-			</tr>
-			<tr>
-				<td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>
-				<td><input type="submit" name="update" value="Update"></td>
-			</tr>
-		</table>
-	</form>
-</body>
+<!doctype html>
+<html lang="en">
+    <!-- Header -->
+    <?php include '../partials/header.php' ?>
+    <body>
+        <!-- Navbar -->
+        <?php include '../partials/navbar.php' ?>
+		<div class="content" align="center" style="padding-top:20px;" ><h1>Editar Libro a Donacion</h1></div>
+		<div class="container">
+			<div align="center"><a href="index.php" class="btn btn-outline-primary" role="button" aria-pressed="true">Regresar a Donacion</a></div>
+		</div>
+		<div class="container" align="center" style="padding-top:20px;">
+			<form name="form1" method="post" action="edit2.php">
+				<table border="0">
+					<tr>
+						<td>Name</td>
+						<td><input type="text" class="form-control" name="autor" value="<?php echo $autor;?>"  placeholder="Autor" pattern="([A-zÀ-ž\s]){2,}" onkeypress = "return event.charCode> = 48 && event.charCode <= 57 || event.charCode> = 97 && event.charCode <= 122 || event.charCode> = 65 && event.charCode <= 90 || evento .charCode == 32 " required></td>
+					</tr>
+					<tr>
+						<td>Nombre libro</td>
+						<td><input type="text" class="form-control" name="nombrelibro" value="<?php echo $nombrelibro;?>"  placeholder="Nombre del Libro" pattern="([A-zÀ-ž\s]){2,}" onkeypress = "return event.charCode> = 48 && event.charCode <= 57 || event.charCode> = 97 && event.charCode <= 122 || event.charCode> = 65 && event.charCode <= 90 || evento .charCode == 32 " required></td>
+					</tr>
+					<tr>
+						<td>Tema libro</td>
+						<td><input type="text" class="form-control" name="temalibro" value="<?php echo $temalibro;?>"  placeholder="Tema del libro" pattern="([A-zÀ-ž\s]){2,}" onkeypress = "return event.charCode> = 48 && event.charCode <= 57 || event.charCode> = 97 && event.charCode <= 122 || event.charCode> = 65 && event.charCode <= 90 || evento .charCode == 32 " required></td>
+					</tr>
+					<tr>
+						<td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>
+						<td><input type="submit" class="form-control btn btn-outline-success" name="update" value="Update"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+        <!-- Footer -->
+        <?php include '../partials/footer.php' ?>
+    </body>
 </html>

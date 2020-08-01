@@ -6,7 +6,7 @@ include("config.php");
 $id = $_GET['id'];
 
 //deleting the row from table
-$sql = "DELETE FROM libro WHERE id=:id";
+$sql = "DELETE FROM donacion WHERE id=:id";
 $query = $conn->prepare($sql);
 $query->execute(array(':id' => $id));
 

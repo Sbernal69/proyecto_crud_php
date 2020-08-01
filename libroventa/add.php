@@ -1,65 +1,49 @@
-<html>
-<head>
-	<title>Add Data</title>
-</head>
-<body>
-<?php
-
-include_once("config.php");
-
-
-if(isset($_POST['Submit'])) {
-
-
-	$nombre = $_POST['nombre'];
-	$autor = $_POST['autor'];
-	$tema = $_POST['tema'];
-	$idioma = $_POST['idioma'];
-	$valorventa = $_POST['valorventa'];
-	$fechaventa= $_POST['fechaventa'];
-
-	if( empty($nombre) || empty($autor) || empty($tema) || empty($idioma) || empty($valorventa) || empty($fechaventa)) {
-
-		if(empty($autor)) {
-			echo "<font color='red'>Campo: autor libro esta vacio.</font><br/>";
-		}
-		if(empty($nombre)) {
-			echo "<font color='red'>Campo: nombre esta vacio.</font><br/>";
-		}
-		if(empty($tema)) {
-			echo "<font color='red'>Campo: tema libro esta vacio.</font><br/>";
-		}
-		if(empty($idioma)) {
-			echo "<font color='red'>Campo: idioma esta vacio.</font><br/>";
-		}
-		if(empty($valorventa)) {
-			echo "<font color='red'>Campo: valor venta  esta vacio.</font><br/>";
-		}
-		if(empty($fechaventa)) {
-			echo "<font color='red'>Campo: fecha venta esta vacio.</font><br/>";
-		}
-
-
-		echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
-	} else {
-
-		$sql = "INSERT INTO venta (nombre, autor, tema, idioma, valorventa, fechaventa) VALUES( :nombre, :autor, :tema, :idioma, :valorventa, :fechaventa)";
-		$query = $conn->prepare($sql);
-
-
-		$query->bindparam(':nombre', $nombre);
-		$query->bindparam(':autor', $autor);
-		$query->bindparam(':tema', $tema);
-		$query->bindparam(':idioma', $idioma);
-		$query->bindparam(':valorventa', $valorventa);
-		$query->bindparam(':fechaventa', $fechaventa);
-		$query->execute();
-
-
-		echo "<font color='green'>Data added successfully.";
-		echo "<br/><a href='index.php'>View Result</a>";
-	}
-}
-?>
-</body>
+<!doctype html>
+<html lang="en">
+    <!-- Header -->
+    <?php include '../partials/header.php' ?>
+    <body>
+        <!-- Navbar -->
+        <?php include '../partials/navbar.php' ?>
+		<div class="content" align="center" style="padding-top:20px;" ><h1>Crear Venta de Libro</h1></div>
+		<div class="container">
+			<div align="center"><a href="index.php" class="btn btn-outline-primary" role="button" aria-pressed="true">Regresar a Venta</a></div>
+		</div>
+		<div class="container" align="center" style="padding-top:20px;">
+			<form action="add2.php" method="post" name="form1">
+				<table width="25%" border="0">
+					<tr>
+						<td>Nombre libro</td>
+						<td><input type="text" class="form-control" name="nombre" placeholder="Autor" pattern="([A-zÀ-ž\s]){2,}" onkeypress = "return event.charCode> = 48 && event.charCode <= 57 || event.charCode> = 97 && event.charCode <= 122 || event.charCode> = 65 && event.charCode <= 90 || evento .charCode == 32 " required></td>
+					</tr>
+					<tr>
+						<td>Autor</td>
+						<td><input type="text" class="form-control" name="autor" placeholder="Autor" pattern="([A-zÀ-ž\s]){2,}" onkeypress = "return event.charCode> = 48 && event.charCode <= 57 || event.charCode> = 97 && event.charCode <= 122 || event.charCode> = 65 && event.charCode <= 90 || evento .charCode == 32 " required></td>
+					</tr>
+					<tr>
+						<td>Tema libro </td>
+						<td><input type="text" class="form-control" name="tema" placeholder="Autor" pattern="([A-zÀ-ž\s]){2,}" onkeypress = "return event.charCode> = 48 && event.charCode <= 57 || event.charCode> = 97 && event.charCode <= 122 || event.charCode> = 65 && event.charCode <= 90 || evento .charCode == 32 " required></td>
+					</tr>
+					<tr>
+						<td>Idioma</td>
+						<td><input type="text" class="form-control" name="idioma" placeholder="Autor" pattern="([A-zÀ-ž\s]){2,}" onkeypress = "return event.charCode> = 48 && event.charCode <= 57 || event.charCode> = 97 && event.charCode <= 122 || event.charCode> = 65 && event.charCode <= 90 || evento .charCode == 32 " required></td>
+					</tr>
+					<tr>
+						<td>Valor Venta </td>
+						<td><input type="text" class="form-control" name="valorventa" required></td>
+					</tr>
+					<tr>
+						<td>Fecha Venta </td>
+						<td><input type="date" class="form-control" name="fechaventa" required></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="submit" class="form-control btn btn-outline-success" name="Submit" value="Add"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+        <!-- Footer -->
+        <?php include '../partials/footer.php' ?>
+    </body>
 </html>

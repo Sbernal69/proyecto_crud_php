@@ -9,28 +9,21 @@ if(isset($_POST['update']))
 	$correo = $_POST['correo'];
 	$celular = $_POST['celular'];
 
-
 	if(empty($nombre) || empty($correo) || empty($celular) || empty($id)) {
-
 		if(empty($nombre)) {
 			echo "<font color='red'>Name field is empty.</font><br/>";
 		}
-
 		if(empty($correo)) {
 			echo "<font color='red'>correo field is empty.</font><br/>";
 		}
-
 		if(empty($celular)) {
 			echo "<font color='red'>celular field is empty.</font><br/>";
         }
-
         if(empty($id)) {
 			echo "<font color='red'>id field is empty.</font><br/>";
         }
-        
         echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
 	} else {
-
         $sql = "UPDATE cliente SET nombre=:nombre, correo=:correo, celular=:celular WHERE id=:id";
         $query = $conn->prepare($sql);
         

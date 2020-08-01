@@ -1,13 +1,18 @@
 <?php
+
 include_once("config.php");
-if(isset($_POST['Submit'])) {
+
+if(isset($_POST['update']))
+{
+    $id = $_POST['id'];
 	$autor = $_POST['autor'];
 	$nombre = $_POST['nombre'];
 	$tema = $_POST['tema'];
 	$idioma = $_POST['idioma'];
 	$valorcompra= $_POST['valorcompra'];
 	$fechacompra = $_POST['fechacompra'];
-	if(empty($autor) || empty($nombre) || empty($tema) || empty($idioma) || empty($valorcompra) || empty($fechacompra)) {
+
+	if(empty($autor) || empty($nombre) || empty($tema) || empty($idioma) || empty($valorcompra) || empty($fechacompra) || empty($id)) {
 		if(empty($autor)) {
 			echo "<font color='red'>Campo: autor esta vacio.</font><br/>";
 		}
@@ -21,30 +26,35 @@ if(isset($_POST['Submit'])) {
 			echo "<font color='red'>Campo: idioma esta vacio.</font><br/>";
 		}
 		if(empty($valorcompra)) {
-			echo "<font color='red'>Campo: valorcompra esta vacio.</font><br/>";
+			echo "<font color='red'>Campo: valor compra esta vacio.</font><br/>";
 		}
 		if(empty($fechacompra)) {
-			echo "<font color='red'>Campo: fechacompra esta vacio.</font><br/>";
-		}
-		echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
+			echo "<font color='red'>Campo: fecha compra esta vacio.</font><br/>";
+        }
+        if(empty($id)) {
+            echo "<font color='red'>id field is empty.</font><br/>";
+        }
+        
+        echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
 	} else {
 
-		$sql = "INSERT INTO compra (autor, nombre, tema, idioma, valorcompra, fechacompra) VALUES(:autor, :nombre, :tema, :idioma, :valorcompra, :fechacompra)";
+		$sql = "UPDATE compra SET autor=:autor, nombre=:nombre, tema=:tema, idioma=:idioma, valorcompra=:valorcompra, fechacompra=:fechacompra WHERE id=:id";
 		$query = $conn->prepare($sql);
 
+		$query->bindparam(':id', $id);
 		$query->bindparam(':autor', $autor);
 		$query->bindparam(':nombre', $nombre);
 		$query->bindparam(':tema', $tema);
 		$query->bindparam(':idioma', $idioma);
 		$query->bindparam(':valorcompra', $valorcompra);
 		$query->bindparam(':fechacompra', $fechacompra);
-		$query->execute();
-
-
-		echo "<font color='green'>Data added successfully.";
-		echo "<br/><a href='index.php'>View Result</a>";
+        $query->execute();
+        
+        echo "<font color='green'>Cliente editado correctmanete";
+		echo " ";
+		echo " ";
+		echo "<br/><a href='index.php'>Validar carga</a>";
 	}
 }
-	header("Location: index.php");
+    header("Location: index.php");
 ?>
-

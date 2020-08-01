@@ -7,7 +7,7 @@ $id = $_GET['id'];
 
 //deleting the row from table
 $sql = "DELETE FROM compra WHERE id=:id";
-$query = $dbConn->prepare($sql);
+$query = $conn->prepare($sql);
 $query->execute(array(':id' => $id));
 
 //redirecting to the display page (index.php in our case)
